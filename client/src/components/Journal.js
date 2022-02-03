@@ -35,7 +35,7 @@ const Journal = () => {
 
       const journals = entries?.map((entry, i) => 
         <div className="grid-33" key={i}><Link to={`/journal/${entry._id}`} className="entry--module entry--link">
-          <h4 className="entry--label">{entry.createdAt}</h4>
+          <h4 className="entry--label">{entry.createdAt.slice(0, 10)}</h4>
           <h3 className="entry--title">{entry.title}</h3>
           </Link>
         </div>

@@ -110,11 +110,11 @@ const JournalDisplay = () => {
                 <ul className="entry--stats--list">
                 <li className="entry--stats--list--item">
                     <h4>Date Created</h4>
-                    <h3>{ entries?.createdAt }</h3>
+                    <h3>{ entries?.createdAt.slice(0, 10) }</h3>
                 </li>
                 <li className="entry--stats--list--item">
                     <h4>Date Updated</h4>
-                    <h3>{ entries?.updatedAt }</h3>
+                    <h3>{ entries?.updatedAt.slice(0, 10) }</h3>
                 </li>
                 </ul>
             </div>
