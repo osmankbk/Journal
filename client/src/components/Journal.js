@@ -10,14 +10,17 @@ const Journal = () => {
   const { user } = useContext(Context).cookies;
 
   const navigate = useNavigate();
+  const location = useLocation();
     
   const getAllJEntries = async () => {
     const email = user?.email;
     const password = user?.password;
+    const page = location.search;
     if( user ) {
-      await context.data.getAllJournalEntries(email, password)
+      await context.data.getAllJournalEntries(email, password, page)
     .then(response => {
       if(response) {
+        console.log(response);
        setEntries(response);
       } else {
         console.log(response);
@@ -33,7 +36,7 @@ const Journal = () => {
       }
     }, []);
 
-      const journals = entries?.map((entry, i) => 
+      const journals = entries?.allEntries.map((entry, i) => 
         <div className="grid-33" key={i}><Link to={`/journal/${entry._id}`} className="entry--module entry--link">
           <h4 className="entry--label">{entry.createdAt.slice(0, 10)}</h4>
           <h3 className="entry--title">{entry.title}</h3>

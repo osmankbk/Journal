@@ -16,13 +16,37 @@ const asyncHat = (cb) => {
         }
     }
 }
-router.get('/entries', authenticate, asyncHat(async(req, res, next) => {
+// router.get('/entries', authenticate, asyncHat(async(req, res, next) => {
+    
+//     try {
+//         const user = req.currentUser;
+//         let filter = { author: user._id };
+//         const allEntries = await Journal.find(filter);
+//         return res.status(200).json(allEntries);
+//     } catch(err) {
+//         console.log({
+//             error: err.message,
+//         })
+//     }
+// }));
 
+router.get('/entries/', authenticate, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
+        
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+        const limit = 11;
+        const offset = parseInt(page - 1) * limit;
+
         let filter = { author: user._id };
-        const allEntries = await Journal.find(filter);
-        return res.status(200).json(allEntries);
+        const allEntries = await Journal.find(filter).sort({'createdAt': -1}).limit(limit).skip(offset);
+        const totalEntry = await Journal.find(filter).countDocuments();
+        const journal = {
+            allEntries,
+            totalEntry,
+            page
+        }
+        return res.status(200).json(journal);
     } catch(err) {
         console.log({
             error: err.message,

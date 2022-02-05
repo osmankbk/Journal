@@ -74,8 +74,8 @@ export default class Data {
         throw new Error();
     }
 
-    getAllJournalEntries = async(email, password) => {
-        const response = await this.api('/entries', 'GET', null, true, { email, password})
+    getAllJournalEntries = async(email, password, page) => {
+        const response = await this.api(`/entries${page}`, 'GET', null, true, { email, password})
         if(response.status === 200) {
             return response.json().then(data => data);
         } else {
