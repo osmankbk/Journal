@@ -1,26 +1,39 @@
+//My Journal component.
 import React, {useState, useContext, useEffect } from 'react';
 import { Link, useNavigate, useParams} from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 import ReactMarkDown from 'react-markdown';
 import { Context } from '../Context.js';
 
-
+// Displays my Journal entries
 const JournalDisplay = () => {
+// Set Modal's state
     const [show, setShow] = useState(false);
+// Set Component's state.    
     const [entries, setEntries] = useState();
-  
-    const { user } = useContext( Context ).cookies;
+
+// Gives Meditation Component access to the Context component.
+    const user = useContext( Context ).authenticatedUser;
     const { getSingleEntry, deleteJournal } = useContext( Context ).data;
 
+// Call react-bootstrap modal show functions    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+// Save UseParams function's id to variable id; for access throughout component.
     const { id } = useParams();
+// save useNavigation to navigate variable; for access throughout component.
     const navigate = useNavigate();
   
-   
-    
+// Calls all embeded funcs upon component's mount.
+    useEffect(() => {
+        const one = getOneEntry();
+        return () => {
+            setEntries(null);
+        }
+    }, []);
 
+// Get a single entry to be displayed
     const getOneEntry = () => {
         getSingleEntry(id)
         .then(result => {
@@ -41,6 +54,7 @@ const JournalDisplay = () => {
         })
     }
 
+// Deletes the current(id) entry being displayed.
     const deleteEntry = () => {
         deleteJournal(id)
         .then(result => {
@@ -55,29 +69,20 @@ const JournalDisplay = () => {
             }
         });
     }
-
+// A functions the class the delete function.
     const deleteJ = () => {
         deleteEntry();
     }
 
-    useEffect(() => {
-        const one = getOneEntry();
-        // if(user && user._id !== entries.author) {
-        //     navigate("/forbidden")
-        // }
-        return () => {
-            setEntries(null);
-        }
-    }, []);
-
     return (
         <div>
+        {/* The pop-up react-bootstrap modal; gives users a breathing room for the deletion of an entry. */}
         <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton className="bg-dark">
             <Modal.Title className="text-light">Delete</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="bg-dark text-light">This Action is Permanent. Do You Wish To Proceede?</Modal.Body>
+          <Modal.Body className="bg-dark text-light">This action is permanent. Do you wish to proceede?</Modal.Body>
           <Modal.Footer className="bg-dark">
             <Button variant="secondary" className="bg-dark" onClick={handleClose}>
               Abort

@@ -322,7 +322,7 @@ p {
   margin-left: 1rem;
   margin-right: -20px;
   padding-left: 20px;
-  border-left: solid 5px whitesmoke;
+  border-left: solid 2px whitesmoke;
 }
 
 .navbar-brand {
@@ -362,6 +362,83 @@ form div input {
   border-color: rgb(112, 108, 108);
 }
 
+/* Pagination Styles */
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left-arr-span {
+  margin-right: 10px;
+}
+
+.right-arr-span {
+  margin-left: 10px;
+}
+
+.left {
+  transform: rotate(135deg);
+  margin-right: 5px;
+  -webkit-transform: rotate(135deg);
+}
+
+.nav-hook {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-hook:hover {
+  color: inherit;
+}
+
+#num-of-pages {
+    margin-left: 8px;
+}
+
+.span-in-btn p{
+  margin-top: 18px;
+}
+
+/* .buttons:hover{
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgb(80, 83, 104);
+} */
+
+#form-input {
+    height: 50px;
+    width: 80px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#form-input:focus {
+  border-radius: 10px;
+  outline: none;
+  border: solid 2px black;
+}
 
 /* line 74, ../sass/global.sass */
 .grid, .grid-25, .grid-33, .grid-100, .grid-66 {

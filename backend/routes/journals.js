@@ -5,7 +5,7 @@ import authenticate from '../middleware/authenticate.js';
 import User from '../models/user.js';
 
 
-
+// Async-await DRY func.
 const asyncHat = (cb) => {
     return async(req, res, next) => {
         try {
@@ -16,35 +16,25 @@ const asyncHat = (cb) => {
         }
     }
 }
-// router.get('/entries', authenticate, asyncHat(async(req, res, next) => {
-    
-//     try {
-//         const user = req.currentUser;
-//         let filter = { author: user._id };
-//         const allEntries = await Journal.find(filter);
-//         return res.status(200).json(allEntries);
-//     } catch(err) {
-//         console.log({
-//             error: err.message,
-//         })
-//     }
-// }));
 
+// This gets limits, skips, and get all entries of a user.
 router.get('/entries/', authenticate, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
         
         const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = 11;
+        const limit = 5;
         const offset = parseInt(page - 1) * limit;
 
         let filter = { author: user._id };
         const allEntries = await Journal.find(filter).sort({'createdAt': -1}).limit(limit).skip(offset);
         const totalEntry = await Journal.find(filter).countDocuments();
+        const pageNum = parseInt(Math.ceil(totalEntry / limit));
         const journal = {
             allEntries,
             totalEntry,
-            page
+            page,
+            pageNum
         }
         return res.status(200).json(journal);
     } catch(err) {
@@ -54,6 +44,7 @@ router.get('/entries/', authenticate, asyncHat(async(req, res, next) => {
     }
 }));
 
+// This get a single entry, using the entire's id.
 router.get('/entries/:id', asyncHat(async(req, res, next) => {
     const entry = await Journal.findById(req.params.id);
     if(entry) {
@@ -64,6 +55,7 @@ router.get('/entries/:id', asyncHat(async(req, res, next) => {
     });
 }));
 
+// This posts an entry.
 router.post('/entries', authenticate, asyncHat(async(req, res, next) => {
     try {
         const body = req.body;
@@ -94,6 +86,7 @@ router.post('/entries', authenticate, asyncHat(async(req, res, next) => {
     }
 }));
 
+// This Updates an entry.
 router.put('/entries/:id', asyncHat(async(req, res, next) => {
     try {
         const journalEntry = await Journal.findById(req.params.id);
@@ -117,6 +110,7 @@ router.put('/entries/:id', asyncHat(async(req, res, next) => {
     }
 }));
 
+// This Delete's an entry.
 router.delete('/entries/:id', asyncHat(async(req, res, next) => {
     const journalEntry = await Journal.findById(req.params.id);
     if(journalEntry) {

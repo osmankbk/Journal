@@ -1,7 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import userRoutes from './routes/users.js';
 import journalRoutes from './routes/journals.js';
 import meditationRoutes from './routes/meditations.js';
@@ -18,10 +17,6 @@ app.use(cors());
 app.use(morgan('dev'));
 // An in-built method to recognize incoming requests objects as JSON objects
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
 // setup a friendly greeting for the root route
 app.get('/', (req, res) => {

@@ -3,15 +3,34 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Context } from '../Context.js';
 
 const UpdateJournal = () => {
+// Set Component's states.    
     const [ errors, setErrors ] = useState();
     const [ title, setTitle ] = useState('');
     const [ entry, setEntry ] = useState('');
-    const { id } = useParams();
-    const { updateJournal, getSingleEntry } = useContext(Context).data;
-    const { user } = useContext(Context).cookies
 
+// Access Data functions from the instance store in the Context component
+    const { updateJournal, getSingleEntry } = useContext(Context).data; 
+
+// Access current user in the Context component    
+    const user = useContext(Context).authenticatedUser; 
+
+// Access browser's params & save to variable.
+    const { id } = useParams();
+
+// Save useNavigate func to a variable
     const navigate = useNavigate();
 
+// Runs all functions within it as soon as component mounts.
+// & sets setTitle & setEntry states to null when component unmounts.
+useEffect( () => {
+    journalToUpdate();
+    return () => {
+        setTitle(null);
+        setEntry(null);
+    }
+},[]);
+
+// A function that returns the inputs values of the displayed journal entry.
     const entryValues = () => {
         const values = {
             title,
@@ -20,6 +39,7 @@ const UpdateJournal = () => {
         return values;
     }
 
+// Gets the journal entry to be udated.
     const journalToUpdate = () => {
         getSingleEntry(id)
         .then(result => {
@@ -38,7 +58,7 @@ const UpdateJournal = () => {
             console.log(errors);
         });
     }
-
+// Posts the updated journal entry.
     const updateEntry = () => {
         const entry = entryValues();
         updateJournal(id, entry)
@@ -54,29 +74,24 @@ const UpdateJournal = () => {
             console.log(error);
         });
     }
-    
+  
+// Sets the inputs value to that of a user as it is typed in.   
     const change = (event) => {
         const name = event.target.name
         const value = event.target.value;
         (name === 'title') ? setTitle(value) : setEntry(value);
     }
 
+// Prevent the form from submitting & calls the updateentry func.   
     const submit = (e) => {
         e.preventDefault();
         updateEntry();
     }
 
+// Go back(1 page back) to previous page.    
    const goBack = () => {
     return navigate(-1)
    }
-   
-    useEffect( () => {
-        journalToUpdate();
-        return () => {
-            setTitle(null);
-            setEntry(null);
-        }
-    },[]);
 
     return (
         <div className="bounds entry--detail">
@@ -86,6 +101,7 @@ const UpdateJournal = () => {
         <div className="grid-66  entry-desc">
           <div className="entry--header">
             <h4 className="entry--label">Journal</h4>
+             {/* errors go here */}
             {<ul>
               {errors?.map((error, i) => 
                 <li key={i}>{error}</li>

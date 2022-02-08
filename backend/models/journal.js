@@ -1,3 +1,4 @@
+// Journal Model
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 const JournalSchema = new Schema({

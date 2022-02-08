@@ -4,6 +4,7 @@ import Meditation from '../models/meditation.js';
 import authenticate from '../middleware/authenticate.js';
 import User from '../models/user.js';
 
+// Async-await DRY func.
 const asyncHat = (cb) => {
     return async(req, res, next) => {
         try {
@@ -17,13 +18,25 @@ const asyncHat = (cb) => {
     }
 }
 
+// This gets limits, skips, and get all entries of a user.
 router.get('/meditations', authenticate, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+        const limit = 5
+        const offset = (page - 1) * limit
         let filter = {
             author: user._id
         };
-        const thoughts = await Meditation.find(filter);
+        const meditations = await Meditation.find(filter).sort({'createdAt': -1}).limit(limit).skip(offset);
+        const totalThoughts = await Meditation.find(filter).countDocuments();
+        const numOfPages = Math.ceil((totalThoughts / limit));
+        const thoughts = {
+            meditations,
+            totalThoughts,
+            numOfPages,
+            page
+        }
         return res.status(200).json(thoughts);
     } catch(err) {
         console.log(err);
@@ -33,6 +46,7 @@ router.get('/meditations', authenticate, asyncHat(async(req, res, next) => {
     }
 }));
 
+// This get a single entry, using the entire's id.
 router.get('/meditations/:id', asyncHat(async(req, res, next) => {
     const thought = await Meditation.findById(req.params.id);
     if(thought) {
@@ -43,6 +57,7 @@ router.get('/meditations/:id', asyncHat(async(req, res, next) => {
     });
 }));
 
+// This posts an entry.
 router.post('/meditations', authenticate, asyncHat(async(req, res, next) => {
     try {
         const body = req.body;
@@ -73,6 +88,7 @@ router.post('/meditations', authenticate, asyncHat(async(req, res, next) => {
     }
 }));
 
+// This Updates an entry.
 router.put('/meditations/:id', asyncHat(async(req, res, next) => {
     try {
         const MeditationEntry = await Meditation.findById(req.params.id);
@@ -96,6 +112,7 @@ router.put('/meditations/:id', asyncHat(async(req, res, next) => {
     }
 }));
 
+// This Delete's an entry.
 router.delete('/meditations/:id', asyncHat(async(req, res, next) => {
     const MeditationEntry = await Meditation.findById(req.params.id);
     if(MeditationEntry) {

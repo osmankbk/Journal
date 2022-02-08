@@ -1,32 +1,41 @@
 // My react Context to pass props and avoiding props drilling.
 import React, { useState, useEffect} from 'react';
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
+// import Cookies from "js-cookie";
+import { ReactSession } from 'react-client-session';
 import Data from './Data';
+
+ReactSession.setStoreType('sessionStorage');
 
 export const Context = React.createContext();
 
-// Pro
+// Provide function
 export const Provider = (props) =>  {
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-    // const [ authenticatedUser, setAuthenticatedUser] = useState(cookies);
+    // const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const [ authenticatedUser, setAuthenticatedUser] = useState(ReactSession.get('user') || null);
     // Passing my data file stored with my HTTP function calls to Provider, ensures that all my component has access to them.
     const data = new Data();
 
 
     const signIn = async (email, password) => {
-        const user = await data.getUser(email, password);
-        if(user !== null) {
-            setCookie('user', user, { path: '/'});
+        if(password) {
+            const user = await data?.getUser(email, password);
+            if(user !== null) {
+                setAuthenticatedUser(user);
+                ReactSession.set('user', user);
+            }
+            return user;
         }
      }
 
     const signOut = () => {
-        return removeCookie('user');
+        ReactSession.remove('user');
+        setAuthenticatedUser(null);
     }
     
     return(
         <Context.Provider value={{
-            cookies,
+            authenticatedUser,
             data,
             actions: {
             signin: signIn,

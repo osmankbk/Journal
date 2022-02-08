@@ -1,6 +1,6 @@
 import  react from 'react';
 
-
+// My App's landing page.
 const Home = () => {
     return (
         <div className="container-fluid justme bg-light text-light">

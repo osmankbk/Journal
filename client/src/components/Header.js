@@ -1,18 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Nav, Container}  from 'react-bootstrap'
 import { Link, useLocation} from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Context } from '../Context.js'
 import logo from "../pen.svg"
 
-//This desplays the log user and log in information
+// Header component; displays app's navigations & user's(name) sign in/out forms.
 const Header = () => {
     const context = useContext(Context);
-    const user  = context.cookies?.user;
+    const user  = context.authenticatedUser;
     const { logout } = context.actions;
     const location = useLocation();
-    console.log(location);
-
+    
+// Returns react navbar
       return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>

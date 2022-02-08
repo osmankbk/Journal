@@ -41,7 +41,7 @@ const SignIn = () => {
   // Calls the sing-in func from Context.
       signin(email, password)
       .then(data => {
-        if(data === null) {
+        if(data === null || !password ) {
           setErrors( "Login Was Not Successful!" )
         } else {
           console.log(`SUCCESS! ${email} is now signed in!`);
@@ -54,6 +54,7 @@ const SignIn = () => {
     return(
     <div className="bounds">
     <div className="grid-33 centered signin">
+    {/* Errors are displayed here  */}
       {
           <ul>
             <li>{errors}</li>

@@ -38,15 +38,10 @@ export default class Data {
     // Get user from Database
     getUser = async(email, password) => {
         const response = await this.api('/users', 'GET', null, true, { email, password });
-        if(response.status === 200) {
+        if(response.status === 200 || response.status === 304) {
             return response.json().then(data => data);
         } else if(response.status === 401) {
             return null;
-            // return response.json().then(data => {
-            //     console.log(data.message);
-            // });
-        // } else if ( response.status === 40) {
-        //     return response.json().then(data => data);
         } else {
             throw new Error("A place holder error.");
         }
@@ -123,8 +118,8 @@ export default class Data {
         throw new Error();
     }
 
-    getAllMeditations = async(email, password) => {
-        const response = await this.api('/meditations', 'GET', null, true, { email, password})
+    getAllMeditations = async(email, password, page) => {
+        const response = await this.api(`/meditations${page}`, 'GET', null, true, { email, password})
         if(response.status === 200) {
             return response.json().then(data => data);
         } else {

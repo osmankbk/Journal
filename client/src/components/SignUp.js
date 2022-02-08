@@ -74,6 +74,7 @@ const SignUp = () => {
   <div className="grid-33 centered signin">
     <h1>Sign Up</h1>
     <div>
+   {/* Errors are displayed here  */}
     {
         <ul>
           <li>{errors}</li>

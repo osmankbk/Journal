@@ -1,18 +1,24 @@
 //The componenet that displays the contents of a entry.
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate, useLocation,  } from 'react-router-dom';
+import { useNavigate,  } from 'react-router-dom';
 import { Context } from '../Context';
 
 
 const MEntry = () => {
+//Set error state
   const [errors, setErrors] = useState();
-  const authUser = useContext(Context).cookies.user;
+// Access the user stored in cookies, in the Context component
+  const authUser = useContext(Context).authenticatedUser;
+
+// Gives entry access to Context component.
   const meditation = useContext(Context).data.createEntryM;
 
+// Use react's ref to capture user's input
   const navigate = useNavigate();
   const titleM = React.createRef();
   const entryTextM = React.createRef();
 
+ // A function that returns the inputs values and current user's id. 
   const entryValues = () => {
     const values = {
       title: titleM.current.value,
@@ -22,9 +28,11 @@ const MEntry = () => {
     return values;
   } 
 
+// Creates an entry to the joural collection. 
   const meditationEntry = () => {
     let entryBody = entryValues();
  
+// Stores current user email & password in variables for authentication.    
     const { email } = authUser
     const { password } = authUser;
 
@@ -41,11 +49,13 @@ const MEntry = () => {
     })
   }
 
+// On submit this function calls the func that creates an entry.
   const submit = (e) => {
     e.preventDefault();
     meditationEntry();
   }
-  // Cancles signing in & returns to the homepage.    
+
+// Cancles signing in & returns to the homepage.    
   const cancle = () => {
     navigate('/meditations');
   }

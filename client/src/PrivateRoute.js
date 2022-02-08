@@ -3,9 +3,9 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { Context } from './Context.js'
 
 const RequireAuth = () => {
-    const { user } = useContext(Context).cookies
+    const { authenticatedUser } = useContext(Context);
     const location = useLocation();
-    return user ? <Outlet />: <Navigate to="/login" state={{from: location}}/>;
+    return authenticatedUser ? <Outlet />: <Navigate to="/login" state={{from: location}}/>;
 }
 
 export default RequireAuth;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-//This component runs when an unexpected error occurs.
+// My About page component
 const About = () => {
     return(
         <div className="container-fluid about bg-light text-light">

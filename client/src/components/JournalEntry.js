@@ -1,18 +1,24 @@
-//The componenet that displays the contents of a entry.
+//Displays journal entry form.
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate, useLocation,  } from 'react-router-dom';
+import { useNavigate,  } from 'react-router-dom';
 import { Context } from '../Context';
 
 
 const JEntry = () => {
+//Set error state
   const [errors, setErrors] = useState();
-  const authUser = useContext(Context).cookies.user;
+// Access the user stored in cookies, in the Context component
+  const authUser = useContext(Context).authenticatedUser;
+
+// Gives entry access to Context component.
   const journal = useContext(Context).data.createEntry;
 
+// Use react's ref to capture user's input
   const titleJ = React.createRef();
   const entryTextJ = React.createRef();
   let navigate = useNavigate();
 
+// A function that returns the inputs values and current user's id.
   const entryValues = () => {
     const values = {
       title: titleJ.current.value,
@@ -22,9 +28,11 @@ const JEntry = () => {
     return values;
   } 
 
+// Creates an entry to the joural collection.
   const journalEntry = () => {
     let entryBody = entryValues();
- 
+
+// Stores current user email & password in variables for authentication.
     const { email } = authUser
     const { password } = authUser;
 
@@ -41,12 +49,13 @@ const JEntry = () => {
     })
   }
 
+// On submit this function calls the func that creates an entry.
   const submit = (e) => {
     e.preventDefault();
     journalEntry();
   }
 
-  // Cancles signing in & returns to the homepage.    
+// Cancles signing in & returns to the homepage.    
   const cancle = () => {
     navigate('/journal');
   }

@@ -1,3 +1,4 @@
+// Meditation Model
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 const MeditationSchema = new Schema({
