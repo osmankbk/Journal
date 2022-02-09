@@ -110,7 +110,7 @@ const navigate = useNavigate();
 
                 <span>
                     <span id="num-of-pages">
-                        {`of ${entries?.pageNum || ''} pages`}
+                        {`of ${entries?.pageNum || '1'} pages`}
                     </span>
                 </span>
 

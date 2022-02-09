@@ -23,14 +23,14 @@ router.get('/meditations', authenticate, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
         const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = 5
-        const offset = (page - 1) * limit
+        const limit = 9
+        const offset = parseInt(page - 1) * limit
         let filter = {
             author: user._id
         };
         const meditations = await Meditation.find(filter).sort({'createdAt': -1}).limit(limit).skip(offset);
         const totalThoughts = await Meditation.find(filter).countDocuments();
-        const numOfPages = Math.ceil((totalThoughts / limit));
+        const numOfPages = parseInt(Math.ceil(totalThoughts / limit));
         const thoughts = {
             meditations,
             totalThoughts,

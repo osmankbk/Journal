@@ -1,10 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import session from 'express-session';
 import userRoutes from './routes/users.js';
 import journalRoutes from './routes/journals.js';
 import meditationRoutes from './routes/meditations.js';
 
+dotenv.config();
 
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
@@ -29,6 +32,17 @@ app.get('/', (req, res) => {
 app.use('/api', userRoutes);
 app.use('/api', journalRoutes);
 app.use('/api', meditationRoutes);
+
+app.use(session({
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: false,
+  }));
+
+  app.use((req, res, next) => {
+    res.locals.currentUser = req.session.user;
+    next();
+  });
 
 // send 404 if no other route matched
 app.use((req, res, next) => {

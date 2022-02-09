@@ -60,12 +60,11 @@ const navigate = useNavigate();
 // Disables the "older entries" button when user is on the last page.
   const disableBtns = () => {
     const currentPage = parseInt(inputValue);
-
     const left =  document.getElementById('left-nav');
-    const leftBtn = document.getElementById('left-arr-btn');
- 
+
     if(currentPage <= 1) {
       left.removeAttribute('href', 'true');
+      left.style.color = 'gray';
     } 
   }
 
@@ -107,7 +106,7 @@ const navigate = useNavigate();
 
                 <span>
                     <span id="num-of-pages">
-                        {`of ${entries?.numOfPages || ''} pages`}
+                        {`of ${entries?.numOfPages || '1'} pages`}
                     </span>
                 </span>
 

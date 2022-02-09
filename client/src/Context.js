@@ -18,14 +18,12 @@ export const Provider = (props) =>  {
 
 
     const signIn = async (email, password) => {
-        if(password) {
-            const user = await data?.getUser(email, password);
-            if(user !== null) {
-                setAuthenticatedUser(user);
-                ReactSession.set('user', user);
-            }
-            return user;
+        const user = await data?.getUser(email, password);
+        if(user !== null) {
+            setAuthenticatedUser(user);
+            ReactSession.set('user', user);
         }
+        return user;
      }
 
     const signOut = () => {
