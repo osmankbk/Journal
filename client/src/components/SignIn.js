@@ -41,7 +41,7 @@ const SignIn = () => {
   // Calls the sing-in func from Context.
       signin(email, password)
       .then(data => {
-        if(data === null || !password ) {
+        if(data === null) {
           setErrors( "Login Was Not Successful!" )
         } else {
           console.log(`SUCCESS! ${email} is now signed in!`);

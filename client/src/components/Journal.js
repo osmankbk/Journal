@@ -98,7 +98,7 @@ const navigate = useNavigate();
                   {/* <button id="left-arr-btn" className="buttons"> */}
                     <a id="left-nav" className="nav-hook" href={`/journal/?page=${inputValue -1}`} >
                       <span className="span-in-btn">
-                          <p><i id="left" className="arrow left"></i>Older Entries</p>
+                          <p><i id="left" className="arrow left"></i>Newer Entries</p>
                       </span>
                     </a>
                   {/* </button> */}
@@ -118,7 +118,7 @@ const navigate = useNavigate();
                     {/* <button id="right-arr-btn" className="buttons"> */}
                       <a id="right-nav" className="nav-hook" href={`/journal/?page=${parseInt( inputValue ) +1}`} >
                         <span className="span-in-btn">
-                            <p>Newer Entries <i className="arrow right"></i></p>
+                            <p>Older Entries <i className="arrow right"></i></p>
                         </span>
                       </a>
                     {/* </button> */}
