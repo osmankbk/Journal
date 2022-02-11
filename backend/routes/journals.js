@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import Journal from '../models/journal.js'; 
 import authenticate from '../middleware/authenticate.js';
+import authorization from '../middleware/authorization.js';
 import User from '../models/user.js';
 
 
@@ -18,12 +19,12 @@ const asyncHat = (cb) => {
 }
 
 // This gets limits, skips, and get all entries of a user.
-router.get('/entries/', authenticate, asyncHat(async(req, res, next) => {
+router.get('/entries/', authorization, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
         
         const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = 5;
+        const limit = 2;
         const offset = parseInt(page - 1) * limit;
 
         let filter = { author: user._id };
@@ -56,7 +57,7 @@ router.get('/entries/:id', asyncHat(async(req, res, next) => {
 }));
 
 // This posts an entry.
-router.post('/entries', authenticate, asyncHat(async(req, res, next) => {
+router.post('/entries', authorization, asyncHat(async(req, res, next) => {
     try {
         const body = req.body;
         const journal = new Journal();
@@ -71,8 +72,10 @@ router.post('/entries', authenticate, asyncHat(async(req, res, next) => {
                     user.journals.push(journal);
                     user.save();
                     console.log("Entry created!");
+                    console.log(user);
+                } else {
+                    console.log(err);
                 }
-                console.log(err);
             });
         });
         res.status(201).json(journal);

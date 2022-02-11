@@ -1,5 +1,6 @@
 // User Model
 import mongoose from 'mongoose';
+import auth from 'basic-auth';
 import bcrypt from 'bcrypt';
 const { Schema } = mongoose;
 let UserSchema = new Schema({
@@ -21,11 +22,11 @@ let UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: "Password is required."
+        required: "Password is required.",
     },
     confirmPassword: {
         type: String,
-        required: "Password is required.."
+        required: "Password is required."
     },
     journals: [{
         type: Schema.Types.ObjectId, 
@@ -37,25 +38,7 @@ let UserSchema = new Schema({
     }],
 }, { collection: "users"});
 
-// UserSchema.statics.authenticate = function(email, password, callback) {
-//     User.findOne({ email })
-//         .exec(function(error, user) {
-//             if(error) {
-//                 return callback(error);
-//             } else if ( !user ) {
-//                 let err = new Error("User not found!");
-//                 err.status = 401;
-//                 return callback(err);
-//             } 
-//             bcrypt.compare(password, user.password, function(error, result) {
-//                 if( result ) {
-//                     return callback(null, user);
-//                 } else {
-//                     callback();
-//                 }
-//             });
-//         });
-// }
+
 
 // My E-mail validation function, that checks to make sure the email path has a valid email input
 // UserSchema.path('email').validate(function (email) {
@@ -64,27 +47,24 @@ let UserSchema = new Schema({
 //  }, 'A valid E-mail is required.');
 
 // hash password before saving to database
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', async function(next) {
     let user = this;
-    bcrypt.hash(user.password, 10, function(err, hash){
-        if(err) {
-            return next(err);
-        }
+    if(!this.isModified('password')) {
+        return next();
+    }
+    const hash = await bcrypt.hash(user.password, 10);
         user.password = hash;
         next();
-    });
 });
 
 // hash confirm password before saving to database
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', async function(next) {
     let user = this;
-    bcrypt.hash(user.confirmPassword, 10, function(err, hash){
-        if(err) {
-            return next(err);
-        }
-        user.confirmPassword = hash;
-        next();
-    });
+    if(!this.isModified('confirmPassword')) {
+        return next();
+    }
+    const hash = await bcrypt.hash(user.confirmPassword, 10);
+    user.confirmPassword = hash;
 });
 
 

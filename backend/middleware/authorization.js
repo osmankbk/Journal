@@ -1,24 +1,17 @@
-import bcrypt from 'bcrypt';
 import auth from 'basic-auth';
 import User from '../models/user.js';
 
 
 //Authenticate users
-const authenticateUser = async(req, res, next) => {
+const authenticateList = async(req, res, next) => {
     let message = null;
     try {
         const credentials = auth(req);
         if(credentials){
             const user = await User.findOne({email: credentials.name});
             if(user){
-                const authenticated = bcrypt
-                .compareSync(credentials.pass, user.password);
-                if(authenticated){
-                    console.log(`Authentication successful for email ${user.email}`)
-                    req.currentUser = user;
-                } else {
-                    message = `Authentication failure for email ${user.email}`;
-                }
+                console.log(`Authentication successful for email ${user.email}`)
+                req.currentUser = user;
             } else {
                 message = `User not found for email ${credentials.name}`;
             }
@@ -37,4 +30,4 @@ const authenticateUser = async(req, res, next) => {
     
 }
 
-export default authenticateUser;
+export default authenticateList;

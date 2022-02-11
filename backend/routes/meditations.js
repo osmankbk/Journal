@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import Meditation from '../models/meditation.js';
 import authenticate from '../middleware/authenticate.js';
+import authorization from '../middleware/authorization.js';
 import User from '../models/user.js';
 
 // Async-await DRY func.
@@ -19,7 +20,7 @@ const asyncHat = (cb) => {
 }
 
 // This gets limits, skips, and get all entries of a user.
-router.get('/meditations', authenticate, asyncHat(async(req, res, next) => {
+router.get('/meditations', authorization, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
         const page = req.query.page ? parseInt(req.query.page) : 1;
@@ -58,7 +59,7 @@ router.get('/meditations/:id', asyncHat(async(req, res, next) => {
 }));
 
 // This posts an entry.
-router.post('/meditations', authenticate, asyncHat(async(req, res, next) => {
+router.post('/meditations', authorization, asyncHat(async(req, res, next) => {
     try {
         const body = req.body;
         const meditation = new Meditation();
