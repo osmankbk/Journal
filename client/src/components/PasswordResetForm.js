@@ -6,7 +6,9 @@ import { Context } from '../Context.js'
 const PassResetForm = () => {
   // login state
   const [errors, setErrors] = useState();
+  // The state for showing the login in link
   const [showSigninLink, setShowSigninLink] = useState(false);
+    // The state for showing the reset password in link
   const [showResetPassLink, setShowResetPassLink] = useState(false);
   // Holds the reset password func from Context API.
   const { resetPassword } = useContext( Context ).data;
