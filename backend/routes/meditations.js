@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 import Meditation from '../models/meditation.js';
-import authenticate from '../middleware/authenticate.js';
 import authorization from '../middleware/authorization.js';
 import User from '../models/user.js';
 
@@ -24,7 +23,7 @@ router.get('/meditations', authorization, asyncHat(async(req, res, next) => {
     try {
         const user = req.currentUser;
         const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = 9
+        const limit = 11
         const offset = parseInt(page - 1) * limit
         let filter = {
             author: user._id

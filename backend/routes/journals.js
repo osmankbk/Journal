@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 import Journal from '../models/journal.js'; 
-import authenticate from '../middleware/authenticate.js';
 import authorization from '../middleware/authorization.js';
 import User from '../models/user.js';
 
@@ -24,7 +23,7 @@ router.get('/entries/', authorization, asyncHat(async(req, res, next) => {
         const user = req.currentUser;
         
         const page = req.query.page ? parseInt(req.query.page) : 1;
-        const limit = 2;
+        const limit = 11;
         const offset = parseInt(page - 1) * limit;
 
         let filter = { author: user._id };

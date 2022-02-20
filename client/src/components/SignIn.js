@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Router } from 'react-router';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate, useLocation} from 'react-router-dom';
 import { Context } from '../Context.js'
 
@@ -44,7 +43,6 @@ const SignIn = () => {
         if(data === null) {
           setErrors( "Login Was Not Successful!" )
         } else {
-          console.log(`SUCCESS! ${email} is now signed in!`);
           navigate(from, { replace: true });
         }
       }).catch(error => {
@@ -69,7 +67,7 @@ const SignIn = () => {
         </form>
       </div>
       <p>&nbsp;</p>
-      <p>Don't have a user account? <Link to="/signup">Click here</Link> to sign up!</p>
+      <p>Forgot Password? Click <Link to="/reset-password">here</Link> to Reset Password</p>   
     </div>
   </div>
     );

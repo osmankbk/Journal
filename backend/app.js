@@ -2,10 +2,10 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import session from 'express-session';
 import userRoutes from './routes/users.js';
 import journalRoutes from './routes/journals.js';
 import meditationRoutes from './routes/meditations.js';
+import passwordResetRoutes from './routes/passwordReset.js';
 
 dotenv.config();
 
@@ -32,12 +32,7 @@ app.get('/', (req, res) => {
 app.use('/api', userRoutes);
 app.use('/api', journalRoutes);
 app.use('/api', meditationRoutes);
-
-app.use(session({
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: false,
-  }));
+app.use('/api', passwordResetRoutes)
 
   app.use((req, res, next) => {
     res.locals.currentUser = req.session.user;

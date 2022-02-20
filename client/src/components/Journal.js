@@ -95,13 +95,11 @@ const navigate = useNavigate();
         <div id="footer">
         <nav className="pagination">
                 <span className="left-arr-span">
-                  {/* <button id="left-arr-btn" className="buttons"> */}
                     <a id="left-nav" className="nav-hook" href={`/journal/?page=${inputValue -1}`} >
                       <span className="span-in-btn">
                           <p><i id="left" className="arrow left"></i>Newer Entries</p>
                       </span>
                     </a>
-                  {/* </button> */}
                 </span>
 
                 <form className="pagination-form" action={`/journal/?page=${inputValue}`} method="get">
@@ -115,13 +113,11 @@ const navigate = useNavigate();
                 </span>
 
                 <span className="right-arr-span">
-                    {/* <button id="right-arr-btn" className="buttons"> */}
                       <a id="right-nav" className="nav-hook" href={`/journal/?page=${parseInt( inputValue ) +1}`} >
                         <span className="span-in-btn">
                             <p>Older Entries <i className="arrow right"></i></p>
                         </span>
                       </a>
-                    {/* </button> */}
                 </span>
             </nav>
 

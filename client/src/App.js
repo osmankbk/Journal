@@ -1,13 +1,11 @@
 
 //This is the container for the components of my app.
 import React from "react";
-import { render } from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { 
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
 } from "react-router-dom";
 
 // My components imports
@@ -29,6 +27,8 @@ import NotFound from "./components/NotFound";
 import contextConsumer from './Context';
 import UpdateJournal from "./components/UpdateJournal";
 import UpdateMeditation from "./components/UpdateMeditation";
+import ResetRequest from "./components/ResetPasswordRequest";
+import PassResetForm from "./components/PasswordResetForm";
 
 // Giving my components access to all data in the contextl
 const HeaderContext = contextConsumer(Header);
@@ -44,6 +44,9 @@ const JournalDisplayContext = contextConsumer(JournalDisplay);
 const MeditationDisplayContext = contextConsumer(MeditationDisplay);
 const UpdateJournalContext = contextConsumer(UpdateJournal);
 const UpdateMeditationContext = contextConsumer(UpdateMeditation);
+const ResetRequestContext = contextConsumer(ResetRequest)
+const PassResetFormContext = contextConsumer(PassResetForm);
+
 
 
 
@@ -69,6 +72,8 @@ function App() {
         <Route path="about" element={<AboutContext />} />
         <Route path="signup" element={<SignUpContext />} />
         <Route path="login" element={<SignInContext />} />
+        <Route path="reset-password" element={<ResetRequestContext />} />
+        <Route path="reset-password/:id/:id" element={<PassResetFormContext />} />
         {/* <Route path="logout" element={<Navigate replace to="/" />} /> */}
         <Route path="error" element={<Error />} />
         <Route path="forbidden" element={<Forbidden />} />

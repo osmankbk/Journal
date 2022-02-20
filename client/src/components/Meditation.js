@@ -95,7 +95,7 @@ const navigate = useNavigate();
                 <span className="left-arr-span">
                     <a id="left-nav" className="nav-hook" href={`/meditations/?page=${inputValue -1}`} >
                       <span className="span-in-btn">
-                          <p><i id="left" className="arrow left"></i>Older Entries</p>
+                          <p><i id="left" className="arrow left"></i>Newer Entries</p>
                       </span>
                     </a>
                 </span>
@@ -113,7 +113,7 @@ const navigate = useNavigate();
                 <span className="right-arr-span">
                       <a id="right-nav" className="nav-hook" href={`/meditations/?page=${parseInt( inputValue ) +1}`} >
                         <span className="span-in-btn">
-                            <p>Newer Entries <i className="arrow right"></i></p>
+                            <p>Older Entries <i className="arrow right"></i></p>
                         </span>
                       </a>
                 </span>

@@ -1,5 +1,7 @@
 import express from 'express';
 import User from '../models/user.js';
+import Token from '../models/token.js';
+import jWebToken from 'jsonwebtoken';
 import authenticate from '../middleware/authenticate.js';
 const router = express.Router();
 
@@ -40,7 +42,7 @@ router.post('/register', asyncHat(async(req, res, next) => {
             confirmPassword: body.confirmPassword
         }
         const user = await User.create(userData);
-        return res.status(201).end();
+        return res.status(201).json(user).end();
     } catch(error) {
         console.log(error);
         return res.status(400).json({

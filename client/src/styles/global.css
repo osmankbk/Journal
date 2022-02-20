@@ -310,13 +310,64 @@ p {
 /* custom css for Home */
 .justme {
   height: 93.7vh;
-  /* padding-top: 15%; */
   background-image: url("../../public/background1.jpeg"); 
   background-size: cover;
   background-position: center center;
   background-blend-mode: multiply;
   margin: 0;
 }
+
+/* Reset password form */
+
+#reset form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
+
+#reset-div-boss {
+  width: 100%;
+}
+
+#reset-div-mini {
+  text-align: center;
+  width: 80%;
+}
+
+
+#reset-link {
+  margin-left: 25%;
+}
+
+#reset-input {
+  width: 100%;
+}
+
+#reset-btn-div {
+  display: flex;
+  justify-content: flex-start;
+  width: 30%;
+}
+
+#reset-btn {
+  margin-top: 15px;
+  width: 200px;
+}
+
+#cancle-btn {
+  margin-top: 0;
+}
+
+/* Enter new password form */
+#new-pass-boss {
+  width: 50%;
+}
+
+#new-pass-btns {
+  display: flex;
+}
+
+/* Nav bar Styles  */
 
 .navbar-expand-lg .navbar-nav #signout {
   margin-left: 1rem;
@@ -345,7 +396,6 @@ p {
 
 .about {
   height: 93.7vh;
-  /* padding-top: 15%; */
   background-image: url("../../public/about.jpeg"); 
   background-size: cover;
   background-position: center center;
@@ -421,11 +471,7 @@ form div input {
   margin-top: 18px;
 }
 
-/* .buttons:hover{
-    cursor: pointer;
-    border-radius: 5px;
-    background: rgb(80, 83, 104);
-} */
+
 
 #form-input {
     height: 50px;
@@ -439,6 +485,8 @@ form div input {
   outline: none;
   border: solid 2px black;
 }
+
+/* End of Pagination Styles */
 
 /* line 74, ../sass/global.sass */
 .grid, .grid-25, .grid-33, .grid-100, .grid-66 {
@@ -852,6 +900,7 @@ input:focus {
   color: rgb(87, 85, 85);
   background: none;
   margin-left: 1%;
+  margin-top: 2%;
   box-shadow: 0 0 0 2px rgb(87, 85, 85) inset;
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;

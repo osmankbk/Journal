@@ -1,9 +1,8 @@
 // User Model
 import mongoose from 'mongoose';
-import auth from 'basic-auth';
 import bcrypt from 'bcrypt';
 const { Schema } = mongoose;
-let UserSchema = new Schema({
+const UserSchema = new Schema({
     email: {
         type: String,
         unique: true,

@@ -43,7 +43,32 @@ export default class Data {
         } else if(response.status === 401) {
             return null;
         } else {
-            throw new Error("A place holder error.");
+            throw new Error("An error occured");
+        }
+    }
+
+    // Reset Password Request
+    requestResetPass = async(user) => {
+        const response = await this.api('/passwordreset', 'POST', user);
+        if(response.status === 200) {
+            return response.json().then(data => data);
+        } else if(response.status === 400) {
+            return null;
+        }
+        else {
+            throw new Error("An error occured");
+        }
+    }
+
+    // Reset Password
+    resetPassword = async(userId, token, user) => {
+        const response = await this.api(`/passwordreset/${userId}/${token}`, 'POST', user);
+        if(response.status === 204) {
+            return null;
+        } else if (response.status === 400) {
+            return response.json().then(data => data);
+        } else {
+            throw new Error("An unexpected error occured!")
         }
     }
 
@@ -55,7 +80,7 @@ export default class Data {
         } else if(response.status === 400 || response.status === 401) {
             return response.json().then(data => data.error);
         } else {
-            throw new Error();
+            throw new Error("An unexpected error occured!");
         }
     }
 

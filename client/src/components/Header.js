@@ -10,7 +10,6 @@ const Header = () => {
     const context = useContext(Context);
     const user  = context.authenticatedUser;
     const { logout } = context.actions;
-    const location = useLocation();
     
 // Returns react navbar
       return (
