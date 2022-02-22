@@ -320,12 +320,14 @@ p {
 .home-header {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding-top: 200px;
+  color: rgb(70, 22, 114);
   text-align: center;
 }
 
 .home-subcontainer-div h3 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-style: italic;
+  color: rgb(70, 22, 114);
   margin-top: 20px;
 }
 
