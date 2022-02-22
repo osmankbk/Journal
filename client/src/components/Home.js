@@ -3,10 +3,10 @@ import  react from 'react';
 // My App's landing page.
 const Home = () => {
     return (
-        <div className="container-fluid justme bg-light text-light">
-            <div className="container-fluid justme-two">
-                <h1 className="home-header text-dark">Welcome To Thought Space</h1>
-                <h3 className="text-center text-dark">A Place Of Meditation</h3>
+        <div className="container-fluid home-container-div bg-light text-light">
+            <div className="home-subcontainer-div">
+                <h1 className="home-header text-dark">Welcome To DOTπDOWN Journal</h1>
+                <h3 className="text-center text-dark">A Space for Beautiful Sparks</h3>
             </div>
         </div>
     );

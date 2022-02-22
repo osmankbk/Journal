@@ -307,8 +307,8 @@ p {
   margin: 15px auto;
 }
 
-/* custom css for Home */
-.justme {
+/* custom css for Home Component*/
+.home-container-div {
   height: 93.7vh;
   background-image: url("../../public/background1.jpeg"); 
   background-size: cover;
@@ -316,6 +316,76 @@ p {
   background-blend-mode: multiply;
   margin: 0;
 }
+
+.home-header {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 200px;
+  text-align: center;
+}
+
+.home-subcontainer-div h3 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* custom css for About Component*/
+
+.about {
+  height: 93.7vh;
+  background-image: url("../../public/about.jpeg"); 
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  margin: 0;
+}
+
+.about-header {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: left center;
+  padding-left: 13%;
+  padding-top: 50px;
+}
+
+.about-summary {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 30%;
+}
+/* End of custom css for About Component*/
+
+
+/* custom css for Contact Component*/
+.contactus {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.email {
+  font-style: italic;
+}
+
+.react-me {
+  font-style: italic;
+}
+
+.linkedin {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.github {
+  margin-left: 10px;
+}
+
+.contact-link {
+  position: fixed;
+  bottom: 0;
+  margin-left: 50%;
+}
+
+/* End custom css for Contact Component*/
 
 /* Reset password form */
 
@@ -358,6 +428,9 @@ p {
   margin-top: 0;
 }
 
+/* End Reset password form */
+
+
 /* Enter new password form */
 #new-pass-boss {
   width: 50%;
@@ -367,8 +440,10 @@ p {
   display: flex;
 }
 
-/* Nav bar Styles  */
+/* End Enter new password form */
 
+
+/* Nav bar Styles  */
 .navbar-expand-lg .navbar-nav #signout {
   margin-left: 1rem;
   margin-right: -20px;
@@ -380,27 +455,9 @@ p {
   margin-left: -1em;
 }
 
-.home-header {
-  text-align: center;
-  padding-top: 200px;
-}
-.about-header {
-  text-align: left center;
-  margin-left: 25%;
-  padding-top: 50px;
-}
 .me-auto {
   display: flex;
   justify-content: space-between;
-}
-
-.about {
-  height: 93.7vh;
-  background-image: url("../../public/about.jpeg"); 
-  background-size: cover;
-  background-position: center center;
-  background-blend-mode: multiply;
-  margin: 0;
 }
 
 form div {
@@ -412,8 +469,10 @@ form div input {
   border-color: rgb(112, 108, 108);
 }
 
-/* Pagination Styles */
+/* End Nav bar Styles  */
 
+
+/* Pagination Styles */
 #footer {
   position: fixed;
   bottom: 0;
@@ -487,6 +546,7 @@ form div input {
 }
 
 /* End of Pagination Styles */
+
 
 /* line 74, ../sass/global.sass */
 .grid, .grid-25, .grid-33, .grid-100, .grid-66 {

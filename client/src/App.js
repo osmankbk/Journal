@@ -29,6 +29,7 @@ import UpdateJournal from "./components/UpdateJournal";
 import UpdateMeditation from "./components/UpdateMeditation";
 import ResetRequest from "./components/ResetPasswordRequest";
 import PassResetForm from "./components/PasswordResetForm";
+import Contact from "./components/Contact";
 
 // Giving my components access to all data in the contextl
 const HeaderContext = contextConsumer(Header);
@@ -74,7 +75,7 @@ function App() {
         <Route path="login" element={<SignInContext />} />
         <Route path="reset-password" element={<ResetRequestContext />} />
         <Route path="reset-password/:id/:id" element={<PassResetFormContext />} />
-        {/* <Route path="logout" element={<Navigate replace to="/" />} /> */}
+        <Route path="contact-us" element={ <Contact /> } />
         <Route path="error" element={<Error />} />
         <Route path="forbidden" element={<Forbidden />} />
         <Route path="*" element={<NotFound />} />
