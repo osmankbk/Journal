@@ -36,7 +36,7 @@ const SignIn = () => {
       const { from } = location.state || { from: { pathname: '/' } }
       const email = emailAddress.current.value;
       const password = passWord.current.value;
-  
+      const body = { email, passWord }
   // Calls the sing-in func from Context.
       signin(email, password)
       .then(data => {

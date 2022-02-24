@@ -23,7 +23,7 @@ const getPassResetLink = () => {
     requestResetPass(email)
     .then(result => {
         if(result) {
-            return setResetRequestSent("Request sucessfully sent! Please, check your email for instructions to reset your password( link can take up to 10min to arrive at your inbox).")
+            return setResetRequestSent("Request sucessfully sent! Please, check your email for instructions to reset your password.")
         } else if(result === null) {
             return setResetRequestSent("A user with that Email was not found.");
         } else {

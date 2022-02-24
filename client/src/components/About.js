@@ -17,7 +17,7 @@ const About = () => {
                 </p>
             </div>
             <div className="contact-link text-center">
-                <a className="text-light" href="/contact-us"><p className="text-uppercase">Contact Us</p></a>
+                <a className="text-light" href="/contact-us"><p className="text-uppercase">contact Me</p></a>
             </div>
         </div>
     );
