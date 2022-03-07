@@ -6,9 +6,11 @@ import app from './app.js';
 dotenv.config();
 
 // mongodb Atlas connection
-mongoose.connect(process.env.JOURNAL);
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then( () => console.log("MongoDB Atlas, connected!"))
+  .catch((error) => console.log('Error connecting to MongoDB Atlas', error));
 
 
 // Start listening on form port

@@ -34,11 +34,6 @@ app.use('/api', journalRoutes);
 app.use('/api', meditationRoutes);
 app.use('/api', passwordResetRoutes)
 
-  app.use((req, res, next) => {
-    res.locals.currentUser = req.session.user;
-    next();
-  });
-
 // send 404 if no other route matched
 app.use((req, res, next) => {
     res.status(404).json({
