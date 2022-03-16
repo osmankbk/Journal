@@ -334,7 +334,7 @@ p {
 /* custom css for About Component*/
 
 .about {
-  height: 93.7vh;
+  height: 93vh;
   background-image: url("../../public/about.jpeg"); 
   background-size: cover;
   background-position: center center;
@@ -342,10 +342,16 @@ p {
   margin: 0;
 }
 
+.about-two {
+  max-height: inherit;
+
+}
+
 .about-header {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: left center;
   padding-left: 13%;
+  margin-left: 10%;
   padding-top: 50px;
 }
 
@@ -353,7 +359,7 @@ p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-top: 30px;
   margin-left: 5%;
-  width: 30%;
+  width: 50%;
 }
 /* End of custom css for About Component*/
 
