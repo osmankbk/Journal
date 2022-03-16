@@ -334,7 +334,7 @@ p {
 /* custom css for About Component*/
 
 .about {
-  height: 93vh;
+  height: 93.6vh;
   background-image: url("../../public/about.jpeg"); 
   background-size: cover;
   background-position: center center;
