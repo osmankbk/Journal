@@ -5,4 +5,4 @@ I built a full-stack MERN( M = mongoDB ATLAS) Journaling app, with a meditation 
   src="https://github.com/osmankbk/Journal/blob/master/markup/ss1.png"
   alt="homepage screen shot"
   title="landing page"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+  style="display: inline-block; margin: 0 auto; max-width: 100px">
