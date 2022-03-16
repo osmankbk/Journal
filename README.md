@@ -2,3 +2,27 @@ I built a full-stack MERN( M = mongoDB ATLAS) Journaling app, with a meditation 
 
 ![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss1.png)
 
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss1.5.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss2.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss3.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss4.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss5.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss6.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss7.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss8.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss9.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss10.png)
+
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss11.png)
+
+
+
