@@ -20,6 +20,8 @@ Download project folder, navigate to API folder and run "npm install" to install
 
 ![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss7.png)
 
+![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss7.5.png)
+
 ![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss8.png)
 
 ![screen shot showcase of live version](https://github.com/osmankbk/Journal/blob/main/markup/ss9.png)
