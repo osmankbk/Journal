@@ -76,6 +76,8 @@ router.post('/entries', authorization, asyncHat(async(req, res, next) => {
                     console.log(err);
                 }
             });
+        }).catch((error) => {
+            console.log("An error occured saving the journal entry", error);
         });
         res.status(201).json(journal);
     } catch(err) {
