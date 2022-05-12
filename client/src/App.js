@@ -75,7 +75,7 @@ function App() {
         <Route path="login" element={<SignInContext />} />
         <Route path="reset-password" element={<ResetRequestContext />} />
         <Route path="reset-password/:id/:id" element={<PassResetFormContext />} />
-        <Route path="contact-us" element={ <Contact /> } />
+        <Route path="contact-me" element={ <Contact /> } />
         <Route path="error" element={<Error />} />
         <Route path="forbidden" element={<Forbidden />} />
         <Route path="*" element={<NotFound />} />
