@@ -1,11 +1,9 @@
 import React from 'react';
-import github from '../github.png';
-import linkedin from '../linkedin.png';
 
 // My About page component
 const About = () => {
     return(
-        <div className="conatct-main-div about bg-light text-light">
+        <div className="about bg-light text-light">
             <div className="about-two">
                 <h1 className="about-header">About</h1>
                 <p className="about-summary">Dotπdown is a web app that makes journaling easy and efficient entry, editing, 
@@ -15,9 +13,6 @@ const About = () => {
                     reading words we wrote a couple of weeks prior require a decipherer)  and are legible upon revisit, regardless of penmanship. 
                     Thank you for visiting, and If this app could serve your journaling needs in any way, please explore your heart content.
                 </p>
-            </div>
-            <div className="contact-link text-center">
-                <a className="text-light" href="/contact-us"><p className="text-uppercase">contact Me</p></a>
             </div>
         </div>
     );
