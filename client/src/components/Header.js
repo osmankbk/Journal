@@ -33,6 +33,9 @@ const Header = () => {
               <LinkContainer to="/about">
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/contact-me">
+                <Nav.Link>Contact-Me</Nav.Link>
+              </LinkContainer>
             </Nav>
             <Nav>
               {
