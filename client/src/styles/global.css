@@ -334,17 +334,17 @@ p {
 /* custom css for About Component*/
 
 .about {
-  height: 93.6vh;
+  height: 93vh;
   background-image: url("../../public/about.jpeg"); 
   background-size: cover;
   background-position: center center;
   background-blend-mode: multiply;
+  overflow: scroll;
   margin: 0;
 }
 
 .about-two {
-  max-height: inherit;
-
+  height: 100%;
 }
 
 .about-header {
@@ -359,6 +359,8 @@ p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-top: 30px;
   margin-left: 5%;
+  margin-bottom: 20;
+  height: 80%;
   width: 50%;
 }
 /* End of custom css for About Component*/
