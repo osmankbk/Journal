@@ -1,5 +1,3 @@
-import  react from 'react';
-
 // My App's landing page.
 const Home = () => {
     return (
